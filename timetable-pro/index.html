@@ -8,6 +8,7 @@
 <title>TimeTable Pro | School Scheduling Studio</title>
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="clean.css">
 <script src="src/engine.js" defer></script>
 <script src="src/app.js" defer></script>
 </head>
@@ -42,8 +43,45 @@
   </header>
   <main class="content-wrap">
    <section id="page-overview" class="page active" aria-labelledby="overviewHeading">
-    <div class="welcome-header"><div><span class="eyebrow"><span class="star">✦</span> INTELLIGENT SCHOOL SCHEDULING</span><h1 id="overviewHeading">Your timetable, <span>beautifully organised.</span></h1><p>Plan your school week, balance teaching loads and keep every class on track — all from one workspace.</p></div><div class="welcome-date" id="welcomeDate"></div></div>
-    <div class="hero-card"><div class="hero-main"><span class="hero-eyebrow"><span class="small-spark">✦</span> SMART TIMETABLE GENERATOR</span><h2>Less scheduling.<br>More time for teaching.</h2><p>Build your complete weekly timetable in seconds, with automatic teacher-clash checks and printable class schedules.</p><div class="hero-buttons"><button class="btn btn-white" id="overviewGenerate">✦ &nbsp; Generate timetable</button><button class="btn btn-outline-light" data-go="setup">Set up school <span>↗</span></button></div></div><div class="hero-visual" aria-hidden="true"><div class="float-dot dot1"></div><div class="float-dot dot2"></div><div class="hero-schedule"><div class="mini-title"><span class="mini-dot"></span> THIS WEEK <span class="mini-right">↗</span></div><div class="mini-grid"><div class="mini-head">MON</div><div class="mini-head">TUE</div><div class="mini-head">WED</div><div class="mini-head">THU</div><div class="mini-head">FRI</div><div class="mini-slot a"></div><div class="mini-slot c"></div><div class="mini-slot b"></div><div class="mini-slot d"></div><div class="mini-slot a"></div><div class="mini-slot d"></div><div class="mini-slot a"></div><div class="mini-slot c"></div><div class="mini-slot b"></div><div class="mini-slot c"></div><div class="mini-slot b"></div><div class="mini-slot d"></div><div class="mini-slot a"></div><div class="mini-slot c"></div><div class="mini-slot d"></div></div><div class="mini-verified">✓ &nbsp; Conflict-free scheduling</div></div></div></div>
+    <div class="welcome-header"><div><span class="eyebrow">SCHOOL PLANNING WORKSPACE</span><h1 id="overviewHeading">School timetable dashboard</h1><p>Organise classes, manage teachers and prepare a clear weekly timetable.</p></div><div class="welcome-date" id="welcomeDate"></div></div>
+    <div class="hero-card">
+      <div class="hero-main">
+        <span class="hero-eyebrow">YOUR NEXT STEP</span>
+        <h2>Build a timetable for your school</h2>
+        <p>Start with school details, add weekly lessons and generate a timetable that checks teacher availability automatically.</p>
+        <div class="hero-buttons">
+          <button class="btn btn-white" type="button" id="homeBlankBtn">+ Start a new school</button>
+          <button class="btn btn-outline-light" type="button" data-go="setup">Edit school setup</button>
+          <button class="btn btn-outline-light" type="button" id="overviewGenerate">Generate timetable →</button>
+        </div>
+      </div>
+    </div>
+    <div class="workflow-panel" id="workflowSteps" aria-label="School timetable setup steps">
+      <article class="workflow-step" id="stepSchool">
+        <span class="workflow-index">01</span>
+        <div class="workflow-content">
+          <div class="workflow-heading"><strong>School details</strong><span class="workflow-status" id="stepSchoolStatus">To do</span></div>
+          <p id="stepSchoolHint">Add classes, teachers and subjects.</p>
+          <button class="step-action" type="button" data-go="setup">Manage school →</button>
+        </div>
+      </article>
+      <article class="workflow-step" id="stepLessons">
+        <span class="workflow-index">02</span>
+        <div class="workflow-content">
+          <div class="workflow-heading"><strong>Weekly lessons</strong><span class="workflow-status" id="stepLessonsStatus">To do</span></div>
+          <p id="stepLessonsHint">Assign each subject to a class and teacher.</p>
+          <button class="step-action" type="button" data-go="setup">Assign lessons →</button>
+        </div>
+      </article>
+      <article class="workflow-step" id="stepGenerate">
+        <span class="workflow-index">03</span>
+        <div class="workflow-content">
+          <div class="workflow-heading"><strong>Timetable & export</strong><span class="workflow-status" id="stepGenerateStatus">To do</span></div>
+          <p id="stepGenerateHint">Generate, check clashes and print schedules.</p>
+          <button class="step-action" type="button" data-go="timetable">View timetable →</button>
+        </div>
+      </article>
+    </div>
     <div class="section-header metrics-heading"><div><h2>School at a glance</h2><p>A quick look at your timetable workspace.</p></div><span class="demo-badge" id="workspaceBadge">Demo data</span></div>
     <div class="stats-grid" id="statsCards"></div>
     <div class="overview-grid">
