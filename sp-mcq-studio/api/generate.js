@@ -1,4 +1,5 @@
 'use strict';
+const { requireSession } = require('../lib/auth');
 
 const MODEL = process.env.GEMINI_MODEL || 'gemini-3.5-flash-lite';
 const LANGUAGES = ['English', 'Urdu', 'Sindhi'];
@@ -94,6 +95,7 @@ function send(res, code, payload) {
 
 async function handler(req, res) {
   if (req.method !== 'POST') return send(res, 405, { error: 'Use POST.' });
+  if (!requireSession(req, res)) return;
   if (!process.env.GEMINI_API_KEY) {
     return send(res, 503, {
       error: 'Question generation is temporarily unavailable. Please contact the site administrator.',
