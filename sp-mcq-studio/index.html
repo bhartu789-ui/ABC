@@ -24,7 +24,37 @@
 @media(max-width:660px){.dev-card{grid-template-columns:1fr;padding:25px;gap:24px}.dev-photo{grid-row:1;width:175px;justify-self:start}.dev-section{padding-bottom:35px}.dev-copy h2{margin-top:12px}}
 .footer{border-top:1px solid var(--border);font-size:12px;color:#95a0b3;padding:22px 0;text-align:center}.loading{padding:65px 20px;text-align:center}.spinner{width:38px;height:38px;border:3px solid #dae2ff;border-top-color:#395ec0;border-radius:50%;margin:0 auto 16px;animation:spin .75s linear infinite}@keyframes spin{to{transform:rotate(360deg)}}.rtl{direction:rtl;text-align:right}.rtl .opt{text-align:right}.rtl .qtop{direction:rtl}
 @media(max-width:890px){.layout{grid-template-columns:1fr}.hero{padding-top:28px}.hero-art{display:none}}@media(max-width:580px){.wrap{padding:0 14px}.nav{min-height:65px}.rightnav .tagline{display:none}.hero h1{font-size:30px}.hero{padding-bottom:21px}.form-panel{padding:18px}.results-head{padding:18px}.question-list{padding:5px 18px 25px}.opts{grid-template-columns:1fr}.toolbar{margin:0 18px}.results-head .actions{width:100%}.btn{flex:1}}
-@media print{body{background:#fff;color:#000;font:12pt Georgia,serif}.header,.hero,.form-panel,.actions,.toolbar,.footer,.dev-section,.notice,.demo,.no-print,.why{display:none!important}.wrap{max-width:none;padding:0}.layout{display:block;padding:0}.results{box-shadow:none;border:0;border-radius:0}.results-head{padding:0 0 12px;border-color:#aaa}.results-head h2{font-size:19pt}.results-head small{color:#333}.question-list{padding:0}.question{break-inside:avoid;padding:15px 0}.opt{background:#fff!important;border:0;padding:6px 2px;min-height:0;font-size:11pt}.opt b{background:none!important;color:#000}.opts{gap:3px 12px}.opt.correct{border:0!important}.opt.correct b{color:#000}.qtext{font-size:12pt}.number{background:#eee;color:#000}.answers-print{display:block!important;break-before:page;margin-top:30px}.answer-table{display:grid;grid-template-columns:repeat(5,1fr);gap:15px}.answer-table div{padding:8px;border:1px solid #ccc}.hide-print-answers .answers-print{display:none!important}}
+@page{size:A4 portrait;margin:16mm 16mm 17mm 16mm}
+@media print{
+  html,body{width:auto!important;height:auto!important;margin:0!important;padding:0!important;background:#fff!important;color:#1d2735!important;font:11pt Arial,"Noto Sans",sans-serif!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .header,.hero,.form-panel,.actions,.toolbar,.footer,.dev-section,.notice,.demo,.no-print,.why{display:none!important}
+  .wrap,.layout,.results,#content,.question-list{width:auto!important;max-width:none!important;margin:0!important;padding:0!important;min-height:0!important;max-height:none!important;overflow:visible!important;box-shadow:none!important}
+  .layout{display:block!important}
+  .results{display:block!important;border:0!important;border-radius:0!important;background:#fff!important}
+  .results-head{padding:0 0 6mm!important;border-bottom:1px solid #cfd6df!important;margin-bottom:5mm;display:block!important}
+  .results-head h2{margin:0!important;font-size:16pt!important;line-height:1.25!important;color:#142136!important}
+  .results-head small{font-size:9pt!important;color:#526072!important;margin-top:2mm!important}
+  .question-list{display:block!important}
+  .question{break-inside:avoid!important;page-break-inside:avoid!important;padding:4.2mm 0!important;border-bottom:1px solid #e4e7eb!important}
+  .qtop{gap:3mm!important;margin-bottom:0!important;align-items:flex-start!important}
+  .number{height:7mm!important;min-width:7mm!important;background:#edf0f4!important;color:#253145!important;border-radius:2mm!important;font-size:9pt!important}
+  .qtext{font-size:10.5pt!important;line-height:1.4!important;margin:1mm 0 3mm!important}
+  .opts{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr))!important;column-gap:7mm!important;row-gap:1mm!important}
+  .opt,.opt.correct,.opt.wrong,.opt.selected{min-height:0!important;margin:0!important;padding:1.2mm 0!important;border:0!important;background:transparent!important;border-radius:0!important;font-size:9.5pt!important;color:#283445!important}
+  .opt b{width:6mm!important;height:6mm!important;min-width:6mm!important;background:transparent!important;color:#283445!important;border:1px solid #adb7c6!important;border-radius:50%!important;font-size:8pt!important}
+  #printAnswers.answers-print{display:block!important;clear:both!important;break-before:page!important;page-break-before:always!important;margin:0!important;padding:0!important;position:static!important;overflow:visible!important;direction:ltr!important;color:#18253f!important}
+  .answer-sheet-header{display:block!important;margin:0 0 7mm!important;padding:0 0 5mm!important;border-bottom:1.5px solid #2d4383!important}
+  .answer-sheet-brand{font-size:9pt!important;letter-spacing:1.6px!important;font-weight:800!important;text-transform:uppercase!important;color:#304b90!important}
+  .answer-sheet-brand span{font-weight:500!important;letter-spacing:.7px!important;color:#66758b!important}
+  #printAnswers h2{margin:5mm 0 2mm!important;font-size:23pt!important;font-weight:800!important;line-height:1.2!important;color:#162b53!important}
+  .answer-sheet-subtitle{font-size:10pt!important;color:#55647a!important;line-height:1.5!important;overflow-wrap:anywhere!important}
+  #printAnswers .answer-table{display:grid!important;grid-template-columns:repeat(4,minmax(0,1fr))!important;gap:3mm 5mm!important;width:100%!important;margin:0!important;padding:0!important;align-items:start!important}
+  .answer-item{display:flex!important;align-items:center!important;justify-content:space-between!important;min-width:0!important;min-height:12mm!important;margin:0!important;padding:2.5mm 3mm!important;border:1px solid #d8e0eb!important;border-radius:2mm!important;background:#fff!important;break-inside:avoid!important;page-break-inside:avoid!important}
+  .answer-no{font-size:10pt!important;font-weight:600!important;color:#5f6e81!important}
+  .answer-letter{font-size:13pt!important;font-weight:800!important;color:#223d79!important}
+  .answer-sheet-footer{display:flex!important;justify-content:space-between!important;align-items:center!important;gap:8mm!important;margin-top:11mm!important;padding-top:3mm!important;border-top:1px solid #d6dde6!important;color:#677589!important;font-size:8.5pt!important;break-inside:avoid!important}
+  body.hide-print-answers #printAnswers.answers-print{display:none!important}
+}
 </style>
 </head>
 <body>
@@ -93,7 +123,7 @@ function render(){const has=questions.length>0;$('actions').classList.toggle('hi
  $('content').innerHTML=`<div class="question-list ${rtl}">${questions.map((q,i)=>`<article class="question"><div class="qtop"><span class="number">${String(i+1).padStart(2,'0')}</span><div style="flex:1"><div class="qtext">${mode==='edit'?'Edit question':safe(q.question)}</div>${mode==='edit'?editContent(q,i):mode==='quiz'?quizContent(q,i):viewContent(q)}</div></div></article>`).join('')}</div>`;
  const scored=Object.keys(selections).filter(k=>selections[k]===questions[Number(k)].answer).length;
  elText('score',mode==='quiz'?(resultShown?`Score: ${scored} / ${questions.length} (${Math.round(100*scored/questions.length)}%)`:`Answered: ${Object.keys(selections).length} / ${questions.length}`):`✓ ${questions.length} questions ready`);
- $('printAnswers').innerHTML=`<h2>Answer key</h2><div class="answer-table">${questions.map((q,i)=>`<div>${i+1}. <strong>${alphabet[q.answer]}</strong></div>`).join('')}</div>`;
+ $('printAnswers').innerHTML=`<div class="answer-sheet-header"><div class="answer-sheet-brand">QuizMetric <span>· Teacher's copy</span></div><h2>Answer Key</h2><div class="answer-sheet-subtitle">${safe(currentMeta.topic||'Question Paper')} · Class ${safe(currentMeta.grade||'—')} · ${safe(currentMeta.language||'English')} · ${questions.length} questions</div></div><div class="answer-table">${questions.map((q,i)=>`<div class="answer-item"><span class="answer-no">${String(i+1).padStart(2,'0')}</span><strong class="answer-letter">${alphabet[q.answer]}</strong></div>`).join('')}</div><div class="answer-sheet-footer"><span>QuizMetric · Answer reference</span><span>Total: ${questions.length} questions</span></div>`;
  $('content').querySelectorAll('[data-pick]').forEach(b=>b.addEventListener('click',()=>{selections[Number(b.dataset.pick)]=Number(b.dataset.choice);render()}));
  $('content').querySelectorAll('[data-edit-question]').forEach(x=>x.addEventListener('input',()=>{questions[Number(x.dataset.editQuestion)].question=x.value;saveLocal()}));
  $('content').querySelectorAll('[data-edit-option]').forEach(x=>x.addEventListener('input',()=>{questions[Number(x.dataset.editOption)].options[Number(x.dataset.j)]=x.value;saveLocal()}));
