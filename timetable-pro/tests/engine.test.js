@@ -117,7 +117,7 @@ test('browser UI and stylesheet contain essential workflows', () => {
   const html=fs.readFileSync(path.join(__dirname,'..','index.html'),'utf8');
   const js=fs.readFileSync(path.join(__dirname,'..','src','app.js'),'utf8');
   const css=fs.readFileSync(path.join(__dirname,'..','styles.css'),'utf8');
-  for(const id of ['overviewGenerate','scheduleTable','settingsForm','allocationForm','cellModal','csvBtn','printAllBtn','backupBtn','backupInput','teacherGrid'])assert.ok(html.includes('id="'+id+'"'),'Missing '+id);
+  for(const id of ['overviewGenerate','scheduleTable','settingsForm','allocationForm','cellModal','csvBtn','printAllBtn','backupBtn','backupInput','teacherGrid','blankSchoolBtn'])assert.ok(html.includes('id="'+id+'"'),'Missing '+id);
   for(const piece of ['generateSchedule(', 'printTable(', 'downloadCSV(', 'importBackup(', 'openEditor(', 'setCell(', 'saveEditor('])assert.ok(js.includes(piece),'Missing '+piece);
   assert.ok(css.includes('@media(max-width:570px)'));
   assert.ok(css.includes('@media print'));
