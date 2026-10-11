@@ -1,0 +1,25 @@
+name: TimeTable Pro Checks
+on:
+  push:
+    paths:
+      - "timetable-pro/**"
+      - ".github/workflows/timetable-pro-tests.yml"
+  pull_request:
+    paths:
+      - "timetable-pro/**"
+  workflow_dispatch:
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: timetable-pro
+    steps:
+      - name: Checkout source
+        uses: actions/checkout@v4
+      - name: Set up Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Run scheduling tests
+        run: npm test
