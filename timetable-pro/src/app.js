@@ -121,10 +121,10 @@
     const done = hasLessons && checks.valid && checks.required>0;
     const states = [
       {id:'School',ok:hasSchool,status:hasSchool?'Ready':'To do',hint:hasSchool
-        ? data.classes.length+' classes · '+data.teachers.length+' teachers · '+data.subjects.length+' subjects'
+        ? data.classes.length+' '+(data.classes.length===1?'class':'classes')+' · '+data.teachers.length+' '+(data.teachers.length===1?'teacher':'teachers')+' · '+data.subjects.length+' '+(data.subjects.length===1?'subject':'subjects')
         : 'Add classes, teachers and subjects.'},
       {id:'Lessons',ok:hasLessons,status:hasLessons?'Ready':'To do',hint:data.allocations.length
-        ? data.allocations.reduce((n,a)=>n+a.perWeek,0)+' lessons assigned'+(!hasLessons?' · check each class':'')
+        ? data.allocations.reduce((n,a)=>n+a.perWeek,0)+' '+(data.allocations.reduce((n,a)=>n+a.perWeek,0)===1?'lesson':'lessons')+' assigned'+(!hasLessons?' · check each class':'')
         : 'Assign subjects and weekly periods to classes.'},
       {id:'Generate',ok:done,status:done?'Ready':'To do',hint:done
         ? checks.scheduled+' of '+checks.required+' lessons scheduled'
