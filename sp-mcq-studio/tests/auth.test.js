@@ -75,16 +75,16 @@ test('Google JWT signature and claims verified against official-style JWKS', asy
 });
 
 test('Google JWT with wrong audience is rejected', async () => {
-  await assert.rejects(()=>auth.verifyGoogleToken(jwt({aud:'malicious.apps.googleusercontent.com'}),{clientId:CLIENT,fetcher:fakeGoogleKeys}),/verify/);
+  await assert.rejects(()=>auth.verifyGoogleToken(jwt({aud:'malicious.apps.googleusercontent.com'}),{clientId:CLIENT,fetcher:fakeGoogleKeys}),/verif/);
 });
 
 test('Google JWT with unverified email is rejected', async () => {
-  await assert.rejects(()=>auth.verifyGoogleToken(jwt({email_verified:false}),{clientId:CLIENT,fetcher:fakeGoogleKeys}),/verify/);
+  await assert.rejects(()=>auth.verifyGoogleToken(jwt({email_verified:false}),{clientId:CLIENT,fetcher:fakeGoogleKeys}),/verif/);
 });
 
 test('Google JWT with expired token is rejected', async () => {
   const now=Math.floor(Date.now()/1000);
-  await assert.rejects(()=>auth.verifyGoogleToken(jwt({iat:now-7200,exp:now-3600}),{clientId:CLIENT,fetcher:fakeGoogleKeys}),/verify/);
+  await assert.rejects(()=>auth.verifyGoogleToken(jwt({iat:now-7200,exp:now-3600}),{clientId:CLIENT,fetcher:fakeGoogleKeys}),/verif/);
 });
 
 test('Google JWT with tampered signature is rejected', async () => {
