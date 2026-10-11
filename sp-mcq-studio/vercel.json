@@ -4,6 +4,29 @@
   "functions": {
     "api/generate.js": {
       "maxDuration": 60
+    },
+    "api/app.js": {
+      "includeFiles": "index.html"
+    },
+    "api/auth/login.js": {
+      "maxDuration": 15
     }
-  }
+  },
+  "routes": [
+    {
+      "src": "^/$",
+      "dest": "/api/app"
+    },
+    {
+      "src": "^/index\\.html$",
+      "dest": "/api/app"
+    },
+    {
+      "src": "^/lib/.*$",
+      "status": 404
+    },
+    {
+      "handle": "filesystem"
+    }
+  ]
 }
