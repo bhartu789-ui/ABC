@@ -184,10 +184,15 @@
       $('overviewPreview').innerHTML=`<div class="overview-caption">${escape(cls.name)} · ${escape(data.settings.schoolName)}</div><table class="preview-grid"><thead><tr><th>PERIOD</th>${weekdays.slice(0,days).map(d=>`<th>${d.slice(0,3).toUpperCase()}</th>`).join('')}</tr></thead><tbody>${Array.from({length:samplePeriods},(_,p)=>`<tr><td>Period ${p+1}</td>${Array.from({length:days},(_,d)=>`<td>${slotHTML(cls.id,d*periods+p,true)}</td>`).join('')}</tr>`).join('')}</tbody></table>`;
     }
     const stats=currentMetrics();const inputs=E.validateInputs(data);
-    const ok=stats.valid&&!inputs.errors.length;
+    const ready=stats.valid&&!inputs.errors.length&&stats.required>0;
+    const emptySchool=!data.classes.length||!data.teachers.length||!data.subjects.length;
     const totalClashes=stats.conflicts.filter(x=>x.includes('double-booked')).length;
-    $('healthCard').className='health-card'+(ok?'':' warning');
-    $('healthCard').innerHTML=`<div class="health-icon">${ok?'✓':'!'}</div><div><strong>${ok?'Your schedule is ready':'Your schedule needs attention'}</strong><small>${ok?`${stats.scheduled} lessons placed · no teacher conflicts`:`${stats.shortages.reduce((n,x)=>n+x.missing,0)} unscheduled lessons · ${totalClashes} teacher clashes`}</small></div>`;
+    const healthTitle=emptySchool?'Finish your school setup':ready?'Your timetable is ready':'Your timetable needs attention';
+    const healthDetail=emptySchool?'Add classes, teachers and subjects to continue.':ready
+      ?stats.scheduled+' lessons placed · no teacher conflicts'
+      :stats.shortages.reduce((n,x)=>n+x.missing,0)+' unscheduled lessons · '+totalClashes+' teacher clashes';
+    $('healthCard').className='health-card'+(ready?'':' warning');
+    $('healthCard').innerHTML=`<div class="health-icon">${ready?'✓':'!'}</div><div><strong>${escape(healthTitle)}</strong><small>${escape(healthDetail)}</small></div>`;
   }
   function renderTimetable(){
     ensureSelection();
