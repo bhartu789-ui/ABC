@@ -173,7 +173,115 @@ $('quizBtn').addEventListener('click',()=>{mode=mode==='quiz'?'view':'quiz';resu
 $('gradeBtn').addEventListener('click',()=>{resultShown=true;render()});
 $('resetQuizBtn').addEventListener('click',()=>{resultShown=false;selections={};render()});
 $('exportBtn').addEventListener('click',exportCsv);$('jsonBtn').addEventListener('click',exportJson);
-$('printBtn').addEventListener('click',()=>{document.body.classList.toggle('hide-print-answers',!$('includeAnswers').checked);window.print()});
+
+function printQuestionPaper(){
+  if(!questions.length){message('Create or open a question set before printing.');return;}
+  const letters=['A','B','C','D'];
+  const answerKeyEnabled=$('includeAnswers').checked;
+  const rtl=['Urdu','Sindhi'].includes(currentMeta.language);
+  const title=safe(currentMeta.topic||'Question Paper');
+  const grade=safe(currentMeta.grade||'—');
+  const lang=safe(currentMeta.language||'English');
+  const meta='Class '+grade+'  ·  '+lang+'  ·  '+questions.length+' questions';
+  const qHTML=questions.map((q,i)=>{
+    const opts='<table class="q-options"><tbody>'+
+      [0,2].map(start=>'<tr>'+
+        [start,start+1].map(j=>'<td><span class="opt-label">'+letters[j]+'.</span><span>'+safe(q.options[j])+'</span></td>').join('')+
+      '</tr>').join('')+'</tbody></table>';
+    return '<article class="question-block"><div class="question-line"><span class="question-index">'+
+      (i+1)+'.</span><strong>'+safe(q.question)+'</strong></div>'+opts+'</article>';
+  }).join('');
+  const keyRows=[];
+  for(let i=0;i<questions.length;i+=4){
+    let row='<tr>';
+    for(let j=0;j<4;j++){
+      const index=i+j;
+      row+=index<questions.length
+        ? '<td><span class="key-number">Q'+String(index+1).padStart(2,'0')+'</span><span class="key-answer">'+letters[questions[index].answer]+'</span></td>'
+        : '<td class="key-empty">&nbsp;</td>';
+    }
+    keyRows.push(row+'</tr>');
+  }
+  const keyHTML=answerKeyEnabled?[
+    '<section class="answer-sheet">',
+    '<div class="answer-eyebrow">QUIZMETRIC <span>TEACHER COPY</span></div>',
+    '<h1>Answer Key</h1>',
+    '<p class="answer-topic">'+title+'</p>',
+    '<p class="answer-meta">'+meta+'</p>',
+    '<div class="answer-divider"></div>',
+    '<table class="answer-grid" aria-label="Answer key"><tbody>',keyRows.join(''),'</tbody></table>',
+    '<div class="answer-bottom"><span>QuizMetric · Answer Reference</span><span>'+questions.length+' Questions</span></div>',
+    '</section>'
+  ].join(''):'';
+  const printStyle=[
+    '<style>',
+    '@page{size:A4 portrait;margin:17mm 16mm 18mm 16mm}',
+    '*{box-sizing:border-box}',
+    'html,body{margin:0;padding:0;background:#fff;color:#1a2a42;font-family:Arial,"Noto Sans",sans-serif;font-size:11pt;-webkit-print-color-adjust:exact;print-color-adjust:exact}',
+    'h1,h2,p{margin:0}',
+    '.paper-header{border-bottom:1.5px solid #2c467d;padding-bottom:7mm;margin-bottom:7mm}',
+    '.paper-brand{font-size:9pt;letter-spacing:1.5px;font-weight:800;color:#334f89}',
+    '.paper-title{font-size:19pt;margin:4mm 0 2mm;line-height:1.25;overflow-wrap:anywhere}',
+    '.paper-meta{font-size:9.5pt;color:#58677d}',
+    '.student-line{display:flex;gap:12mm;justify-content:space-between;margin-top:8mm;font-size:9.5pt}',
+    '.student-line span{display:inline-block;border-bottom:1px solid #b6c0ce;flex:1;padding-bottom:1mm}',
+    '.question-block{break-inside:avoid;page-break-inside:avoid;margin:0 0 6mm;padding:0 0 5mm;border-bottom:1px solid #e6eaf0}',
+    '.question-line{display:flex;align-items:flex-start;gap:3mm;line-height:1.42;font-size:11pt}',
+    '.question-index{flex-shrink:0;color:#3b5184;font-weight:800}',
+    '.question-line strong{font-weight:600;overflow-wrap:anywhere}',
+    '.q-options{border-collapse:collapse;table-layout:fixed;width:100%;margin:2.5mm 0 0}',
+    '.q-options td{width:50%;vertical-align:top;padding:1.5mm 5mm 1.5mm 0;font-size:9.7pt;line-height:1.35;overflow-wrap:anywhere}',
+    '.opt-label{font-weight:750;margin-right:3mm;color:#344c78}',
+    '.question-paper[dir="rtl"] .question-line{direction:rtl}',
+    '.question-paper[dir="rtl"] .q-options{direction:rtl}',
+    '.answer-sheet{break-before:page;page-break-before:always;display:block;direction:ltr!important;width:100%;margin:0;padding:0;clear:both}',
+    '.answer-eyebrow{font-size:9pt;font-weight:850;letter-spacing:1.3px;color:#2c477f;padding-bottom:4mm}',
+    '.answer-eyebrow span{color:#78869a;font-weight:600;margin-left:4mm;font-size:8pt}',
+    '.answer-sheet h1{font-size:23pt;color:#192d53;line-height:1.2;margin:2mm 0 5mm}',
+    '.answer-topic{font-size:12pt;font-weight:700;line-height:1.4;overflow-wrap:anywhere}',
+    '.answer-meta{font-size:9.5pt;color:#627189;margin-top:2.5mm}',
+    '.answer-divider{height:1.5px;background:#2c467d;margin:7mm 0 8mm}',
+    '.answer-grid{width:100%;border-collapse:separate;border-spacing:3mm 3.4mm;table-layout:fixed;margin:-3.4mm -3mm;width:calc(100% + 6mm)}',
+    '.answer-grid td{width:25%;height:13mm;vertical-align:middle;border:1px solid #d4dce7;border-radius:1.5mm;padding:3mm 3.5mm;background:#f9fbfe;white-space:nowrap}',
+    '.answer-grid .key-empty{background:#fff;border:0}',
+    '.key-number{font-size:10pt;color:#62718a;font-weight:650;display:inline-block;min-width:16mm}',
+    '.key-answer{font-size:13pt;font-weight:850;color:#213d78;float:right}',
+    '.answer-bottom{margin-top:12mm;padding-top:4mm;border-top:1px solid #d8dfeb;display:flex;justify-content:space-between;gap:10mm;color:#68778b;font-size:8.5pt;break-inside:avoid}',
+    '@media screen{body{margin:20px auto;max-width:180mm}}',
+    '</style>'
+  ].join('');
+  const docHTML=[
+    '<!doctype html><html lang="en"><head><meta charset="UTF-8"><title>',
+    'QuizMetric — '+title,'</title>',printStyle,'</head><body>',
+    '<section class="question-paper" dir="',rtl?'rtl':'ltr','">',
+    '<header class="paper-header"><div class="paper-brand">QUIZMETRIC · QUESTION PAPER</div>',
+    '<h1 class="paper-title">',title,'</h1><p class="paper-meta">',meta,'</p>',
+    '<div class="student-line"><span>Name: __________________</span><span>Roll No: __________</span></div>',
+    '</header>',qHTML,'</section>',keyHTML,'</body></html>'
+  ].join('');
+  const frame=document.createElement('iframe');
+  frame.setAttribute('title','Question paper print document');
+  frame.style.cssText='position:fixed;right:0;bottom:0;width:0;height:0;border:0;opacity:0;pointer-events:none';
+  document.body.appendChild(frame);
+  let printed=false;
+  const cleanup=()=>{if(frame.isConnected)frame.remove();};
+  frame.onload=()=>{
+    if(printed)return;
+    printed=true;
+    setTimeout(()=>{
+      try{
+        const printWindow=frame.contentWindow;
+        printWindow.addEventListener('afterprint',()=>setTimeout(cleanup,1000),{once:true});
+        printWindow.focus();
+        printWindow.print();
+        setTimeout(cleanup,90000);
+      }catch(error){cleanup();message('Could not open the print dialog. Please try again.');}
+    },160);
+  };
+  frame.srcdoc=docHTML;
+}
+
+$('printBtn').addEventListener('click',printQuestionPaper);
 $('generatorForm').addEventListener('submit',async e=>{
  e.preventDefault();clearMessage();const btn=$('generate');btn.disabled=true;btn.textContent='Generating questions…';$('content').innerHTML='<div class="loading"><div class="spinner"></div><strong>Creating your MCQs</strong><p style="font-size:12px;color:#8391a6">Checking the topic and preparing the answer key</p></div>';
  const payload={topic:$('topic').value.trim(),source:$('source').value.trim(),grade:Number($('grade').value),count:Number($('count').value),difficulty:$('difficulty').value,language:$('language').value};
