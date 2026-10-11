@@ -77,7 +77,7 @@ async function handler(req, res) {
   if (req.method !== 'POST') return send(res, 405, { error: 'Use POST.' });
   if (!process.env.GEMINI_API_KEY) {
     return send(res, 503, {
-      error: 'AI is not configured. Add GEMINI_API_KEY in Vercel Environment Variables and redeploy. Sample mode works without a key.',
+      error: 'Question generation is temporarily unavailable. Please contact the site administrator.',
       setupNeeded: true
     });
   }
