@@ -144,6 +144,7 @@ async function verifyGoogleToken(jwt, { clientId = process.env.GOOGLE_CLIENT_ID,
   const now = Math.floor(Date.now() / 1000);
   if (!['https://accounts.google.com', 'accounts.google.com'].includes(payload.iss) ||
       payload.aud !== clientId || typeof clientId !== 'string' ||
+      (payload.azp != null && payload.azp !== clientId) ||
       !Number.isInteger(payload.exp) || payload.exp <= now ||
       !Number.isInteger(payload.iat) || payload.iat > now + 60 ||
       (payload.nbf != null && payload.nbf > now + 60) ||
