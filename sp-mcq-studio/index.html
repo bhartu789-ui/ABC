@@ -23,11 +23,48 @@
 .nav-developer:hover{text-decoration:underline}
 @media(max-width:660px){.dev-card{grid-template-columns:1fr;padding:25px;gap:24px}.dev-photo{grid-row:1;width:175px;justify-self:start}.dev-section{padding-bottom:35px}.dev-copy h2{margin-top:12px}}
 .footer{border-top:1px solid var(--border);font-size:12px;color:#95a0b3;padding:22px 0;text-align:center}.loading{padding:65px 20px;text-align:center}.spinner{width:38px;height:38px;border:3px solid #dae2ff;border-top-color:#395ec0;border-radius:50%;margin:0 auto 16px;animation:spin .75s linear infinite}@keyframes spin{to{transform:rotate(360deg)}}.rtl{direction:rtl;text-align:right}.rtl .opt{text-align:right}.rtl .qtop{direction:rtl}
+
+/* Quiz result card: screen-only; PDF export uses its own isolated print document. */
+.student-entry{display:flex;flex-wrap:wrap;align-items:center;gap:10px;padding:16px 27px;background:#f9fbff;border-bottom:1px solid var(--border)}
+.student-entry label{font-size:12px;font-weight:800;color:#435674}
+.student-entry label span{color:#8a97a9;font-weight:500}
+.student-entry input{flex:1;min-width:180px;max-width:330px;padding:10px 12px;border:1px solid #d4dfed;border-radius:9px;font-size:13px;color:#243653;background:#fff}
+.student-entry input:focus{outline:none;border-color:#5a76cf;box-shadow:0 0 0 3px #e2eaff}
+.report-card{margin:21px 27px 22px;padding:26px;border:1px solid #dce6f5;border-radius:18px;background:linear-gradient(155deg,#f3f7ff 0%,#fff 42%,#fff 100%);box-shadow:0 12px 28px rgba(36,58,100,.06);color:#26354e}
+.report-head{display:flex;align-items:flex-start;justify-content:space-between;gap:12px}
+.report-kicker{font-size:10px;font-weight:850;color:#4264ae;letter-spacing:1.6px;text-transform:uppercase}
+.report-head h3{font-size:clamp(22px,2.7vw,29px);line-height:1.2;letter-spacing:-.8px;margin:9px 0 7px;color:#182b4d}
+.report-head p{font-size:12px;color:#718098;margin:0}
+.report-seal{display:grid;place-items:center;flex-shrink:0;border-radius:50%;height:54px;width:54px;background:#e8f7ee;border:1px solid #bce6d1;color:#0f7c57;font-weight:900;font-size:26px}
+.report-student{display:grid;grid-template-columns:1fr 1.5fr .6fr;gap:13px;padding:19px 0;margin:19px 0 18px;border-block:1px solid #e1e8f2}
+.report-student>div{min-width:0}
+.report-overline{display:block;font-size:10px;color:#7b879b;font-weight:750;text-transform:uppercase;letter-spacing:.7px;margin-bottom:6px}
+.report-student strong{font-size:13px;color:#253651;overflow-wrap:anywhere;font-weight:750}
+.report-grid{display:grid;grid-template-columns:1.15fr .85fr 1fr 1fr;gap:10px}
+.report-stat{border:1px solid #e2e8f2;background:#fff;border-radius:13px;padding:15px 12px;min-width:0}
+.report-stat-primary{background:#294b94;border-color:#294b94;color:#fff}
+.report-stat-primary .report-overline{color:#dce8ff}
+.report-score{font-size:34px;font-weight:900;line-height:1.1;letter-spacing:-1.5px}
+.report-score small{font-size:15px;font-weight:600;letter-spacing:0;color:#dce8ff}
+.report-score-label{font-size:11px;margin-top:5px;color:#dce8ff}
+.report-grade{font-size:35px;font-weight:900;line-height:1.08;color:#3154a0}
+.report-grade-caption{font-size:11px;color:#60738e;margin-top:6px;line-height:1.3}
+.report-number{font-size:29px;font-weight:850;line-height:1.12;color:#223653}
+.report-stat p{margin:6px 0 0;font-size:11px;color:#687994}
+.report-track-meta{display:flex;justify-content:space-between;gap:10px;margin-top:20px;font-weight:750;font-size:12px;color:#344966}
+.report-track{height:11px;border-radius:15px;background:#e4eaf5;overflow:hidden;margin-top:9px}
+.report-track-fill{height:100%;background:linear-gradient(90deg,#4b71c4,#31ac88);border-radius:15px}
+.report-grade-note{margin:13px 0 0;color:#728299;font-size:11px;line-height:1.55}
+.report-actions{display:flex;flex-wrap:wrap;gap:9px;margin-top:22px}
+.report-actions .btn{flex:1;min-height:43px}
+@media(max-width:720px){.report-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.report-student{grid-template-columns:1fr 1fr}.report-card{padding:19px}}
+@media(max-width:580px){.report-card{margin:15px 18px;padding:18px}.student-entry{padding:14px 18px}.student-entry input{min-width:100%}.report-head h3{font-size:23px}.report-seal{height:43px;width:43px;font-size:21px}.report-student{gap:15px}.report-actions .btn{flex:1 1 100%}}
+
 @media(max-width:890px){.layout{grid-template-columns:1fr}.hero{padding-top:28px}.hero-art{display:none}}@media(max-width:580px){.wrap{padding:0 14px}.nav{min-height:65px}.rightnav .tagline{display:none}.hero h1{font-size:30px}.hero{padding-bottom:21px}.form-panel{padding:18px}.results-head{padding:18px}.question-list{padding:5px 18px 25px}.opts{grid-template-columns:1fr}.toolbar{margin:0 18px}.results-head .actions{width:100%}.btn{flex:1}}
 @page{size:A4 portrait;margin:16mm 16mm 17mm 16mm}
 @media print{
   html,body{width:auto!important;height:auto!important;margin:0!important;padding:0!important;background:#fff!important;color:#1d2735!important;font:11pt Arial,"Noto Sans",sans-serif!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}
-  .header,.hero,.form-panel,.actions,.toolbar,.footer,.dev-section,.notice,.demo,.no-print,.why{display:none!important}
+  .header,.hero,.form-panel,.actions,.toolbar,.footer,.dev-section,.notice,.demo,.no-print,.why,.report-card,.student-entry{display:none!important}
   .wrap,.layout,.results,#content,.question-list{width:auto!important;max-width:none!important;margin:0!important;padding:0!important;min-height:0!important;max-height:none!important;overflow:visible!important;box-shadow:none!important}
   .layout{display:block!important}
   .results{display:block!important;border:0!important;border-radius:0!important;background:#fff!important}
@@ -70,7 +107,10 @@
 <section class="bank-panel" aria-label="Saved question sets"><div class="panel-title"><span class="step">02</span> My question bank</div><p>Save up to 25 sets on this browser. Export JSON for a backup or to move questions to another device.</p><select class="bank-select" id="bankSelect" aria-label="Saved question sets"><option value="">No saved sets</option></select><div class="bank-row"><button class="btn btn-primary" type="button" id="saveBankBtn">+ Save current</button><button class="btn" type="button" id="openBankBtn">Open</button><button class="btn" type="button" id="deleteBankBtn">Delete</button></div><div class="bank-row" style="margin-top:8px"><button class="btn" type="button" id="importBtn">↑ Import JSON</button><input type="file" id="jsonInput" accept=".json,application/json" class="hidden"/></div><div class="bank-status" id="bankStatus" role="status">Nothing saved yet</div></section>
 </section>
 <section class="panel results"><div class="results-head"><div><h2 id="results-title">Your question set</h2><small id="meta">Questions will appear here after generation</small></div><div class="actions hidden" id="actions"><button type="button" class="btn" id="editBtn">✎ Edit</button><button type="button" class="btn" id="quizBtn" aria-pressed="false">◉ Show Answers</button><button type="button" class="btn" id="exportBtn">↓ CSV</button><button type="button" class="btn" id="jsonBtn">↓ JSON</button><button type="button" class="btn" id="shuffleBtn">⇄ Shuffle</button><button type="button" class="btn btn-primary" id="printBtn">▣ Print / PDF</button></div></div>
-<div class="notice hidden" id="notice" role="alert"></div><div id="content"><div class="empty"><div class="illustration"><div class="paper"><b></b><i></i><i></i><i></i></div><div class="check">✓</div></div><h3>Ready when you are.</h3><p>Choose a topic, grade and language to prepare your first question set, or explore the example questions.</p><div class="featureline"><span>Practice first</span><span>Reveal answers anytime</span><span>Printable tests</span></div></div></div>
+<div class="notice hidden" id="notice" role="alert"></div>
+<div id="studentEntry" class="student-entry hidden"><label for="studentNameInput">Student name <span>(optional)</span></label><input id="studentNameInput" maxlength="80" autocomplete="name" placeholder="Enter student name for report card"/></div>
+<section id="reportCard" class="report-card hidden" aria-live="polite" aria-labelledby="report-title"></section>
+<div id="content"><div class="empty"><div class="illustration"><div class="paper"><b></b><i></i><i></i><i></i></div><div class="check">✓</div></div><h3>Ready when you are.</h3><p>Choose a topic, grade and language to prepare your first question set, or explore the example questions.</p><div class="featureline"><span>Practice first</span><span>Reveal answers anytime</span><span>Printable tests</span></div></div></div>
 <div class="toolbar hidden" id="toolbar"><div id="score" class="score"></div><div style="display:flex;gap:8px;flex-wrap:wrap"><label class="btn no-print" style="cursor:pointer"><input type="checkbox" id="includeAnswers"/> Include answer key in PDF</label><button class="btn btn-primary hidden" id="gradeBtn">Submit Quiz</button><button class="btn hidden" id="resetQuizBtn">Retry Quiz</button></div></div>
 <div id="printAnswers" class="answers-print hidden" aria-hidden="true"></div>
 </section></div></main>
@@ -105,12 +145,12 @@ const sample = [
  {question:'Which force slows a rolling ball on a rough surface?',options:['Gravity only','Light','Sound','Friction'],answer:3,explanation:'Friction opposes motion between surfaces in contact.'},
  {question:'Which instrument measures force?',options:['Thermometer','Spring balance','Clock','Barometer'],answer:1,explanation:'A spring balance measures force from the extension of a spring.'}
 ];
-let questions=[];let currentMeta={};let mode='quiz';let selections={};let resultShown=false;
+let questions=[];let currentMeta={};let mode='quiz';let selections={};let resultShown=false;let reviewVisible=false;let finishedAt=null;let studentName='';
 function safe(s){return String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
 function message(text, success=false){$('notice').textContent=text;$('notice').className=`notice${success?' success':''}`;}
 function clearMessage(){$('notice').className='notice hidden';$('notice').textContent='';}
 function elText(id,text){$(id).textContent=text;}
-function loadSet(q,meta){questions=q.map((x,i)=>({...x,id:i+1}));currentMeta=meta;mode='quiz';selections={};resultShown=false;clearMessage();render();try{localStorage.setItem('quizmetric_mcq_v1',JSON.stringify({questions,currentMeta}))}catch{}}
+function loadSet(q,meta){questions=q.map((x,i)=>({...x,id:i+1}));currentMeta=meta;mode='quiz';selections={};resultShown=false;reviewVisible=false;finishedAt=null;clearMessage();render();try{localStorage.setItem('quizmetric_mcq_v1',JSON.stringify({questions,currentMeta}))}catch{}}
 function doDownload(filename,contents,mime){const blob=new Blob([contents],{type:mime});const url=URL.createObjectURL(blob);const link=document.createElement('a');link.href=url;link.download=filename;document.body.appendChild(link);link.click();link.remove();setTimeout(()=>URL.revokeObjectURL(url),1000)}
 function filename(ext){const name=(currentMeta.topic||'mcqs').toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'').slice(0,40)||'mcqs';return name+'.'+ext}
 function exportCsv(){const esc=s=>{const value=String(s??'');const protectedValue=/^[\s]*[=+@-]/.test(value)?"'"+value:value;return '"'+protectedValue.replace(/"/g,'""')+'"'};const rows=[['No','Question','A','B','C','D','Correct','Explanation'],...questions.map((q,i)=>[i+1,q.question,...q.options,alphabet[q.answer],q.explanation])];doDownload(filename('csv'),'\uFEFF'+rows.map(r=>r.map(esc).join(',')).join('\r\n'),'text/csv;charset=utf-8')}
@@ -118,7 +158,7 @@ function exportJson(){doDownload(filename('json'),JSON.stringify({meta:currentMe
 function quizContent(q,i){const pick=selections[i];return `<div class="opts ${currentMeta.language==='Sindhi'||currentMeta.language==='Urdu'?'rtl':''}">${q.options.map((option,j)=>{const css=pick===j?'selected':'';const resolved=resultShown?(j===q.answer?' correct':pick===j?' wrong':''):'';return `<button class="opt ${css} ${resolved}" type="button" data-pick="${i}" data-choice="${j}" ${resultShown?'disabled':''}><b>${alphabet[j]}</b><span>${safe(option)}</span></button>`}).join('')}</div>${resultShown?`<p class="why">${pick===q.answer?'✓ Correct':'✗ Correct: '+alphabet[q.answer]} · ${safe(q.explanation)}</p>`:''}`}
 function viewContent(q){return `<div class="opts ${currentMeta.language==='Sindhi'||currentMeta.language==='Urdu'?'rtl':''}">${q.options.map((option,j)=>`<div class="opt ${j===q.answer?'correct':''}"><b>${alphabet[j]}</b><span>${safe(option)}</span></div>`).join('')}</div><div class="why">✓ Answer: ${alphabet[q.answer]} · ${safe(q.explanation||'No explanation')}</div>`}
 function editContent(q,i){return `<textarea class="edit-input edit-q" data-edit-question="${i}" rows="2">${safe(q.question)}</textarea><div class="opts">${q.options.map((opt,j)=>`<label><small>Option ${alphabet[j]}</small><input class="edit-input" data-edit-option="${i}" data-j="${j}" value="${safe(opt)}" /></label>`).join('')}</div><div style="display:flex;gap:10px;align-items:end;flex-wrap:wrap;margin-top:10px"><label><small>Correct answer</small><select class="edit-input edit-answer" data-edit-answer="${i}">${alphabet.map((letter,j)=>`<option value="${j}" ${q.answer===j?'selected':''}>${letter}</option>`).join('')}</select></label><label style="flex:1"><small>Explanation</small><input class="edit-input" data-edit-explanation="${i}" value="${safe(q.explanation)}" /></label></div>`}
-function render(){const has=questions.length>0;$('actions').classList.toggle('hidden',!has);$('toolbar').classList.toggle('hidden',!has);$('printAnswers').classList.add('hidden');$('saveBankBtn').disabled=!has;$('gradeBtn').classList.toggle('hidden',mode!=='quiz'||resultShown);$('gradeBtn').disabled=!has||Object.keys(selections).length!==questions.length;$('resetQuizBtn').classList.toggle('hidden',mode!=='quiz');$('editBtn').textContent=mode==='edit'?'✓ Done editing':'✎ Edit';$('quizBtn').textContent=mode==='view'?'◉ Hide Answers':'◉ Show Answers';$('quizBtn').setAttribute('aria-pressed',String(mode==='view'));elText('results-title',has?`${safe(currentMeta.topic)} — MCQs`:'Your question set');elText('meta',has?`Class ${currentMeta.grade} · ${currentMeta.difficulty} · ${currentMeta.language} · ${questions.length} questions · ${currentMeta.mode==='demo'?'Example set':currentMeta.mode==='ai'?'Question set':'Saved / imported'}`:'Questions will appear here after generation');if(!has)return;
+function render(){const has=questions.length>0;$('actions').classList.toggle('hidden',!has);$('toolbar').classList.toggle('hidden',!has);$('printAnswers').classList.add('hidden');$('studentEntry').classList.toggle('hidden',!has||mode!=='quiz'||resultShown);$('content').classList.toggle('hidden',has&&mode==='quiz'&&resultShown&&!reviewVisible);$('saveBankBtn').disabled=!has;$('gradeBtn').classList.toggle('hidden',mode!=='quiz'||resultShown);$('gradeBtn').disabled=!has||Object.keys(selections).length!==questions.length;$('resetQuizBtn').classList.toggle('hidden',mode!=='quiz');$('editBtn').textContent=mode==='edit'?'✓ Done editing':'✎ Edit';$('quizBtn').textContent=mode==='view'?'◉ Hide Answers':'◉ Show Answers';$('quizBtn').setAttribute('aria-pressed',String(mode==='view'));elText('results-title',has?`${safe(currentMeta.topic)} — MCQs`:'Your question set');elText('meta',has?`Class ${currentMeta.grade} · ${currentMeta.difficulty} · ${currentMeta.language} · ${questions.length} questions · ${currentMeta.mode==='demo'?'Example set':currentMeta.mode==='ai'?'Question set':'Saved / imported'}`:'Questions will appear here after generation');if(!has){renderReportCard();return;}
  const rtl=['Urdu','Sindhi'].includes(currentMeta.language)?'rtl':'';
  $('content').innerHTML=`<div class="question-list ${rtl}">${questions.map((q,i)=>`<article class="question"><div class="qtop"><span class="number">${String(i+1).padStart(2,'0')}</span><div style="flex:1"><div class="qtext">${mode==='edit'?'Edit question':safe(q.question)}</div>${mode==='edit'?editContent(q,i):mode==='quiz'?quizContent(q,i):viewContent(q)}</div></div></article>`).join('')}</div>`;
  const scored=Object.keys(selections).filter(k=>selections[k]===questions[Number(k)].answer).length;
@@ -129,7 +169,148 @@ function render(){const has=questions.length>0;$('actions').classList.toggle('hi
  $('content').querySelectorAll('[data-edit-option]').forEach(x=>x.addEventListener('input',()=>{questions[Number(x.dataset.editOption)].options[Number(x.dataset.j)]=x.value;saveLocal()}));
  $('content').querySelectorAll('[data-edit-answer]').forEach(x=>x.addEventListener('change',()=>{questions[Number(x.dataset.editAnswer)].answer=Number(x.value);saveLocal()}));
  $('content').querySelectorAll('[data-edit-explanation]').forEach(x=>x.addEventListener('input',()=>{questions[Number(x.dataset.editExplanation)].explanation=x.value;saveLocal()}));
+ renderReportCard();
 }
+
+function calculateQuizReport(items, choices){
+ const total=items.length;
+ const details=items.map((q,i)=>{
+   const choice=Number.isInteger(choices[i])&&choices[i]>=0&&choices[i]<4?choices[i]:null;
+   return {number:i+1,question:q.question,chosen:choice,answer:q.answer,correct:choice!==null&&choice===q.answer};
+ });
+ const correct=details.filter(q=>q.correct).length;
+ const incorrect=details.filter(q=>q.chosen!==null&&!q.correct).length;
+ const skipped=total-correct-incorrect;
+ const percent=total?Math.round(100*correct/total):0;
+ const band=percent>=90?['A+','Outstanding']:percent>=80?['A','Excellent']:percent>=70?['B','Very Good']:percent>=60?['C','Good']:percent>=50?['D','Developing']:['E','Keep Practicing'];
+ return {total,correct,incorrect,skipped,percent,grade:band[0],performance:band[1],details};
+}
+function reportDate(){
+ const date=finishedAt instanceof Date?finishedAt:new Date();
+ return date.toLocaleDateString('en-GB',{day:'2-digit',month:'short',year:'numeric'});
+}
+function renderReportCard(){
+ const card=$('reportCard');
+ const visible=questions.length>0&&mode==='quiz'&&resultShown;
+ card.classList.toggle('hidden',!visible);
+ if(!visible){card.replaceChildren();return;}
+ const r=calculateQuizReport(questions,selections);
+ const person=studentName.trim()||'Student';
+ card.innerHTML=[
+   '<div class="report-head"><div>',
+   '<div class="report-kicker">QUIZMETRIC · ASSESSMENT RESULT</div>',
+   '<h3 id="report-title">Quiz Report Card</h3>',
+   '<p>Completed on '+safe(reportDate())+'</p>',
+   '</div><div class="report-seal" aria-hidden="true">✓</div></div>',
+   '<div class="report-student">',
+     '<div><span class="report-overline">Student</span><strong>'+safe(person)+'</strong></div>',
+     '<div><span class="report-overline">Topic</span><strong>'+safe(currentMeta.topic||'Question Set')+'</strong></div>',
+     '<div><span class="report-overline">Class</span><strong>'+safe(currentMeta.grade||'—')+'</strong></div>',
+   '</div>',
+   '<div class="report-grid">',
+     '<div class="report-stat report-stat-primary"><span class="report-overline">Overall score</span><div class="report-score">'+r.correct+'<small> / '+r.total+'</small></div><div class="report-score-label">'+r.percent+'% accuracy</div></div>',
+     '<div class="report-stat"><span class="report-overline">Grade</span><div class="report-grade">'+r.grade+'</div><div class="report-grade-caption">'+r.performance+'</div></div>',
+     '<div class="report-stat"><span class="report-overline">Correct</span><div class="report-number">'+r.correct+'</div><p>Answered correctly</p></div>',
+     '<div class="report-stat"><span class="report-overline">Incorrect</span><div class="report-number">'+r.incorrect+'</div><p>Need revision</p></div>',
+   '</div>',
+   '<div class="report-track-meta"><span>Overall performance</span><span>'+r.percent+'%</span></div>',
+   '<div class="report-track" role="progressbar" aria-label="Quiz accuracy" aria-valuemin="0" aria-valuemax="100" aria-valuenow="'+r.percent+'"><div class="report-track-fill" style="width:'+r.percent+'%"></div></div>',
+   '<p class="report-grade-note">Grade indicates practice performance and is not an official school grade.</p>',
+   '<div class="report-actions">',
+     '<button type="button" class="btn btn-primary" id="reportPrintBtn">↓ Print / Save Report PDF</button>',
+     '<button type="button" class="btn" id="reportReviewBtn">'+(reviewVisible?'Hide Review':'Review Answers')+'</button>',
+     '<button type="button" class="btn" id="reportRetakeBtn">↻ Try Again</button>',
+   '</div>'
+ ].join('');
+ $('reportPrintBtn').addEventListener('click',printReportCard);
+ $('reportReviewBtn').addEventListener('click',()=>{
+   reviewVisible=!reviewVisible;
+   render();
+   if(reviewVisible)$('content').scrollIntoView?.({behavior:'smooth',block:'start'});
+ });
+ $('reportRetakeBtn').addEventListener('click',restartQuiz);
+}
+function restartQuiz(){
+ resultShown=false;
+ reviewVisible=false;
+ finishedAt=null;
+ selections={};
+ mode='quiz';
+ clearMessage();
+ render();
+ $('studentEntry').scrollIntoView?.({behavior:'smooth',block:'start'});
+}
+function printReportCard(){
+ if(!resultShown||mode!=='quiz'||!questions.length)return;
+ const r=calculateQuizReport(questions,selections);
+ const person=safe(studentName.trim()||'Student');
+ const title=safe(currentMeta.topic||'Question Set');
+ const rows=r.details.map(d=>'<tr><td>'+d.number+'</td><td class="q-label">'+safe(d.question)+'</td><td>'+ (d.chosen===null?'—':alphabet[d.chosen]) +'</td><td>'+alphabet[d.answer]+'</td><td class="'+(d.correct?'pass':'fail')+'">'+(d.correct?'Correct':'Incorrect')+'</td></tr>').join('');
+ const style=String.raw;
+ const sheetCSS=[
+   '@page{size:A4 portrait;margin:16mm 17mm 18mm 17mm}',
+   '*{box-sizing:border-box}html,body{margin:0;padding:0;font-family:Arial,"Noto Sans",sans-serif;color:#1e2c46;font-size:10pt;-webkit-print-color-adjust:exact;print-color-adjust:exact}',
+   '.brand{font-weight:850;letter-spacing:1.5px;color:#304f95;font-size:10pt}.kicker{margin-top:12mm;color:#6b7a90;font-size:9pt;text-transform:uppercase;letter-spacing:1px}',
+   'h1{font-size:26pt;margin:4mm 0 3mm;color:#20345b}h2{font-size:13pt;color:#233b66;margin:12mm 0 4mm}',
+   '.sub{font-size:10pt;color:#718096}.info{display:grid;grid-template-columns:1fr 1.5fr 0.6fr;gap:8mm;margin-top:12mm;padding:5mm 0;border-block:1px solid #dce3ee}',
+   '.info span,.metric span{font-size:8pt;color:#728096;display:block;text-transform:uppercase;margin-bottom:2mm}.info strong{font-size:11pt;overflow-wrap:anywhere}',
+   '.metrics{display:grid;grid-template-columns:1.2fr 1fr 1fr 1fr;gap:3mm;margin-top:9mm}.metric{border:1px solid #d6dfeb;border-radius:2mm;padding:4mm}.metric strong{font-size:24pt;color:#2d4d92}',
+   '.bar{height:3mm;background:#e4eaf4;border-radius:2mm;overflow:hidden;margin-top:7mm}.bar div{height:100%;background:#4275c5}',
+   '.legend{margin-top:4mm;font-size:9pt;color:#65758d}.review{width:100%;border-collapse:collapse;table-layout:fixed;font-size:9pt}',
+   '.review th{background:#ecf2fb;color:#233b66;text-align:left;border:1px solid #d7e0ec;padding:3mm}',
+   '.review td{vertical-align:top;border:1px solid #dce3eb;padding:2.5mm;overflow-wrap:anywhere}',
+   '.review tr{break-inside:avoid;page-break-inside:avoid}.review .q-label{width:48%}.review .pass{color:#0a7555;font-weight:700}.review .fail{color:#9b4452;font-weight:700}',
+   '.note{margin-top:11mm;padding-top:4mm;border-top:1px solid #dce3eb;font-size:8.5pt;color:#738096}',
+   '.page-foot{font-size:8pt;color:#8996a8;float:right}',
+   '@media screen{body{max-width:180mm;margin:20px auto}}'
+ ].join('');
+ const html=[
+   '<!doctype html><html lang="en"><head><meta charset="UTF-8"><title>QuizMetric Report Card</title><style>',sheetCSS,'</style></head><body>',
+   '<div class="brand">QUIZMETRIC <span class="page-foot">ASSESSMENT REPORT</span></div>',
+   '<div class="kicker">Student Performance</div>',
+   '<h1>Quiz Report Card</h1><p class="sub">Date: '+safe(reportDate())+'</p>',
+   '<div class="info">',
+     '<div><span>Student</span><strong>'+person+'</strong></div>',
+     '<div><span>Topic</span><strong>'+title+'</strong></div>',
+     '<div><span>Class</span><strong>'+safe(currentMeta.grade||'—')+'</strong></div>',
+   '</div>',
+   '<div class="metrics">',
+     '<div class="metric"><span>Score</span><strong>'+r.correct+' / '+r.total+'</strong></div>',
+     '<div class="metric"><span>Percentage</span><strong>'+r.percent+'%</strong></div>',
+     '<div class="metric"><span>Grade</span><strong>'+r.grade+'</strong></div>',
+     '<div class="metric"><span>Correct</span><strong>'+r.correct+'</strong><div>'+r.incorrect+' incorrect</div></div>',
+   '</div>',
+   '<div class="bar"><div style="width:'+r.percent+'%"></div></div>',
+   '<p class="legend">'+r.performance+' · '+r.total+' questions · '+safe(currentMeta.language||'English')+'</p>',
+   '<h2>Question-wise Result</h2>',
+   '<table class="review"><colgroup><col style="width:8%"><col style="width:48%"><col style="width:14%"><col style="width:14%"><col style="width:16%"></colgroup>',
+   '<thead><tr><th>No.</th><th>Question</th><th>Chosen</th><th>Correct</th><th>Result</th></tr></thead><tbody>',
+   rows,'</tbody></table>',
+   '<div class="note">QuizMetric · Practice assessment report. Grade is an indicative study measure, not an official school result.</div>',
+   '</body></html>'
+ ].join('');
+ const frame=document.createElement('iframe');
+ frame.setAttribute('title','QuizMetric report card');
+ frame.style.cssText='position:fixed;right:0;bottom:0;width:0;height:0;border:0;opacity:0;pointer-events:none';
+ document.body.appendChild(frame);
+ let didPrint=false;
+ const cleanup=()=>{if(frame.isConnected)frame.remove();};
+ frame.onload=()=>{
+   if(didPrint)return;
+   didPrint=true;
+   setTimeout(()=>{
+     try{
+       const w=frame.contentWindow;
+       w.addEventListener('afterprint',()=>setTimeout(cleanup,1000),{once:true});
+       w.focus();
+       w.print();
+       setTimeout(cleanup,90000);
+     }catch(error){cleanup();message('Could not open the report print dialog. Please try again.');}
+   },180);
+ };
+ frame.srcdoc=html;
+}
+
 function saveLocal(){try{localStorage.setItem('quizmetric_mcq_v1',JSON.stringify({questions,currentMeta}))}catch{}}
 function readBank(){
  try{const bank=JSON.parse(localStorage.getItem(BANK_KEY)||'[]');return Array.isArray(bank)?bank.slice(0,MAX_BANK_SETS).filter(x=>x&&x.id&&x.data&&Array.isArray(x.data.questions)):[]}catch{return []}
@@ -166,12 +347,13 @@ $('jsonInput').addEventListener('change',async e=>{
  const file=e.target.files?.[0];if(!file)return;e.target.value='';if(file.size>1500000){message('JSON file is too large (limit 1.5 MB).');return}
  try{const set=validateSet(JSON.parse(await file.text()));loadSet(set.questions,set.meta);updateBankUI();message('Imported '+set.questions.length+' questions. Use Save current to add them to your bank.',true)}catch(error){message(error instanceof SyntaxError?'File is not valid JSON.':error.message||'Import failed.')}
 });
-$('shuffleBtn').addEventListener('click',()=>{if(!questions.length)return;for(let i=questions.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[questions[i],questions[j]]=[questions[j],questions[i]];}questions.forEach((q,i)=>q.id=i+1);mode='quiz';selections={};resultShown=false;saveLocal();render();message('Question order shuffled. Answer keys remain paired with each question.',true)});
+$('shuffleBtn').addEventListener('click',()=>{if(!questions.length)return;reviewVisible=false;finishedAt=null;for(let i=questions.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[questions[i],questions[j]]=[questions[j],questions[i]];}questions.forEach((q,i)=>q.id=i+1);mode='quiz';selections={};resultShown=false;saveLocal();render();message('Question order shuffled. Answer keys remain paired with each question.',true)});
 $('tryDemo').addEventListener('click',()=>loadSet(sample,{topic:'Force and Motion — sample',grade:7,difficulty:'Easy',language:'English',mode:'demo'}));
-$('editBtn').addEventListener('click',()=>{mode=mode==='edit'?'quiz':'edit';resultShown=false;selections={};render()});
-$('quizBtn').addEventListener('click',()=>{mode=mode==='view'?'quiz':'view';resultShown=false;render()});
-$('gradeBtn').addEventListener('click',()=>{if(Object.keys(selections).length!==questions.length){message('Please answer all questions before submitting.');return;}resultShown=true;render();message('Quiz submitted. Your score and answer explanations are shown below.',true)});
-$('resetQuizBtn').addEventListener('click',()=>{resultShown=false;selections={};render()});
+$('editBtn').addEventListener('click',()=>{mode=mode==='edit'?'quiz':'edit';resultShown=false;reviewVisible=false;finishedAt=null;selections={};render()});
+$('quizBtn').addEventListener('click',()=>{mode=mode==='view'?'quiz':'view';resultShown=false;reviewVisible=false;finishedAt=null;render()});
+$('gradeBtn').addEventListener('click',()=>{if(Object.keys(selections).length!==questions.length){message('Please answer all questions before submitting.');return;}finishedAt=new Date();resultShown=true;reviewVisible=false;render();message('Quiz submitted. Your report card is ready.',true);$('reportCard').scrollIntoView?.({behavior:'smooth',block:'start'})});
+$('resetQuizBtn').addEventListener('click',restartQuiz);
+$('studentNameInput').addEventListener('input',e=>{studentName=e.target.value.slice(0,80)});
 $('exportBtn').addEventListener('click',exportCsv);$('jsonBtn').addEventListener('click',exportJson);
 
 function printQuestionPaper(){
@@ -288,7 +470,7 @@ $('generatorForm').addEventListener('submit',async e=>{
  try{const response=await fetch('/api/generate',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)});const data=await response.json().catch(()=>({error:'Server returned an unreadable response.'}));if(!response.ok)throw new Error(data.error||'Generation failed');if(!Array.isArray(data.questions))throw new Error('The question set could not be loaded.');loadSet(data.questions,{...payload,source:undefined,mode:'ai'});message('Your question set is ready.',true)}catch(err){message(err.message||'Something went wrong. Please try again.');if(questions.length)render();else $('content').innerHTML='<div class="empty"><h3>Generation unavailable</h3><p>Please try again later, or browse the example questions.</p></div>'}finally{btn.disabled=false;btn.textContent='✦ Generate Questions'}
 });
 updateBankUI();
-try{const prev=JSON.parse((localStorage.getItem('quizmetric_mcq_v1') || localStorage.getItem('sp_mcq_v1')));if(prev&&Array.isArray(prev.questions)&&prev.questions.length&&prev.currentMeta){questions=prev.questions;currentMeta=prev.currentMeta;mode='quiz';selections={};resultShown=false;render();message('Your saved question set is ready. Select an answer to begin.',true)}}catch{}
+try{const prev=JSON.parse((localStorage.getItem('quizmetric_mcq_v1') || localStorage.getItem('sp_mcq_v1')));if(prev&&Array.isArray(prev.questions)&&prev.questions.length&&prev.currentMeta){questions=prev.questions;currentMeta=prev.currentMeta;mode='quiz';selections={};resultShown=false;reviewVisible=false;finishedAt=null;render();message('Your saved question set is ready. Select an answer to begin.',true)}}catch{}
 })();
 </script>
 </body></html>
