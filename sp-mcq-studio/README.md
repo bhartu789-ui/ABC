@@ -9,7 +9,9 @@ Teacher-first, free-tier-compatible MCQ app with AI generation, editable questio
 - Choose **Grade 1–12**, **Easy/Medium/Hard**, **English/Urdu/Sindhi**.
 - AI returns **four options, one answer, and an explanation** per question.
 - **Edit** questions, all options, correct answers and explanations before printing.
-- **Quiz mode**: click answers, check score and explanations, retry.
+- **Quiz mode**: starts by default with answers hidden. Students select answers, submit and receive a report card. Use Show Answers only on request.
+- **Student Report Card**: optional student name, topic, class, completion date, score, percentage, performance grade, correct/incorrect answers and accuracy bar. Includes Review Answers, Try Again and A4 Print / Save as PDF.
+- Report grades are **practice performance bands**, not official school result grades (A+ ≥90%, A ≥80%, B ≥70%, C ≥60%, D ≥50%, E below 50%).
 - **Print/Save as PDF**: print question paper with optional answer key.
 - **Export CSV (Excel-compatible, Unicode BOM)** and JSON.
 - **My Question Bank:** save up to 25 MCQ sets on the current browser, then open or delete them.
@@ -55,6 +57,8 @@ No `npm install` needed. Uses Node.js >= 20 for native `fetch`. The local server
 4. Deploy. Use **Settings → Environment Variables** to add `GEMINI_API_KEY`, then redeploy.
 
 No database, login or cloud storage are used in this MVP. If releasing publicly to many users, add persistent per-user rate limiting, bot protection, accounts and abuse controls before enabling a shared API key; browser data can be lost if cache/storage is cleared.
+
+Report cards are generated locally in the student's browser after submission. They are not automatically uploaded to a school server, emailed or saved in the cloud. Students can print or save a report PDF. Optional names are not sent to the MCQ generator.
 
 ## Notes about accuracy and privacy
 AI answers can be wrong; a teacher should review each correct answer. Pasted lesson material is transmitted to Google's Gemini service for generation. Do not paste private student data. Free-tier requests may be subject to provider terms on how data is used. Google quotas vary; free tier is limited, not unlimited.
