@@ -20,7 +20,19 @@ module.exports = function handler(req, res) {
     return res.end();
   }
   try {
-    let html = fs.readFileSync(path.join(process.cwd(), 'index.html'), 'utf8');
+    const candidates = [
+      path.join(process.cwd(), 'index.html'),
+      path.join(__dirname, '..', 'index.html'),
+      path.join(process.cwd(), 'sp-mcq-studio', 'index.html'),
+      path.join(__dirname, 'index.html'),
+      path.join(__dirname, '..', '..', 'index.html')
+    ];
+    let html = null;
+    for (const candidate of candidates) {
+      try { html = fs.readFileSync(candidate, 'utf8'); break; }
+      catch (error) { if (error.code !== 'ENOENT') throw error; }
+    }
+    if (!html) throw new Error('INDEX_HTML_NOT_BUNDLED');
     // The subject is a stable Google identifier and scopes local question sets.
     const identity = user ? JSON.stringify({ sub: user.sub, name: user.name, email: user.email }) : 'null';
     const safeIdentity = identity.replace(/</g, '\\u003c').replace(/>/g, '\\u003e')
@@ -31,7 +43,8 @@ module.exports = function handler(req, res) {
     res.setHeader('Content-Type', 'text/html; charset=utf-8');
     if (req.method === 'HEAD') return res.end();
     return res.end(html);
-  } catch {
+  } catch (error) {
+    console.error('QuizMetric /api/app template error:', error.code || error.message);
     res.statusCode = 500;
     res.setHeader('Content-Type', 'text/plain; charset=utf-8');
     return res.end('QuizMetric is temporarily unavailable.');
