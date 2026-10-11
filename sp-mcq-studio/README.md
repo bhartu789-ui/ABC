@@ -5,7 +5,7 @@
 Teacher-first, free-tier-compatible MCQ app with AI generation, editable questions, exam/quiz mode, CSV + JSON download and Print / Save as PDF. English, Urdu and Sindhi. Grade 1–12. No paid npm dependencies, no account or database required.
 
 ## Live features
-- Generate **5, 10, 15 or 20** multiple-choice questions for a topic and optional reference text.
+- Generate **5 to 50** multiple-choice questions, in steps of 5, for a topic and optional reference text.
 - Choose **Grade 1–12**, **Easy/Medium/Hard**, **English/Urdu/Sindhi**.
 - AI returns **four options, one answer, and an explanation** per question.
 - **Edit** questions, all options, correct answers and explanations before printing.
@@ -18,9 +18,12 @@ Teacher-first, free-tier-compatible MCQ app with AI generation, editable questio
 - Restore your most recent set from **browser localStorage** (no cloud backup).
 - **Try sample set** works without API key or internet (after page loads).
 
-**Privacy:** saved sets are stored only in the current browser, not synced across devices. Download JSON before clearing browser data. JSON imports accept up to 1.5 MB and 100 questions.
+**Privacy:** saved sets are stored only in the current browser, not synced across devices. Download JSON before clearing browser data. JSON imports accept up to 1.5 MB and 50 questions.
 
 **MCQ quality checks:** exact duplicate questions and repeated answer choices are rejected, but teachers must still review factual correctness.
+
+## Larger sets (25–50 questions)
+When 25–50 MCQs are requested, QuizMetric makes several smaller calls to the configured Gemini model, then combines and validates the resulting questions. A 50-question set uses batches of 20, 20 and 10. It can use more of your provider quota and take longer. The request may still fail if the model times out, quota is exceeded, or generated questions repeat; successful generation requires a valid API key and sufficient quota.
 
 ## What is required for REAL AI generation?
 Use a free-tier Gemini API key from https://aistudio.google.com/apikey. **Do not put it in the HTML or GitHub.**
