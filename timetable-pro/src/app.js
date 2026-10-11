@@ -111,7 +111,30 @@
     ensureSelection();
     $('workspaceBadge').textContent=isDemo?'Demo workspace':'Your school';
     $('workspaceBadge').classList.toggle('custom',!isDemo);
-    renderStats();renderOverview();renderTimetable();renderSetup();renderTeachers();
+    renderStats();renderSteps();renderOverview();renderTimetable();renderSetup();renderTeachers();
+  }
+  function renderSteps(){
+    const hasSchool = data.classes.length>0 && data.teachers.length>0 && data.subjects.length>0;
+    const perClass = new Set(data.allocations.map(a=>a.classId));
+    const hasLessons = hasSchool && data.allocations.length>0 && data.classes.every(c=>perClass.has(c.id));
+    const checks = currentMetrics();
+    const done = hasLessons && checks.valid && checks.required>0;
+    const states = [
+      {id:'School',ok:hasSchool,status:hasSchool?'Ready':'To do',hint:hasSchool
+        ? data.classes.length+' classes · '+data.teachers.length+' teachers · '+data.subjects.length+' subjects'
+        : 'Add classes, teachers and subjects.'},
+      {id:'Lessons',ok:hasLessons,status:hasLessons?'Ready':'To do',hint:data.allocations.length
+        ? data.allocations.reduce((n,a)=>n+a.perWeek,0)+' lessons assigned'+(!hasLessons?' · check each class':'')
+        : 'Assign subjects and weekly periods to classes.'},
+      {id:'Generate',ok:done,status:done?'Ready':'To do',hint:done
+        ? checks.scheduled+' of '+checks.required+' lessons scheduled'
+        : hasLessons?'Generate the timetable and review any conflicts.':'Finish school setup and lesson allocations first.'}
+    ];
+    for(const state of states){
+      $('step'+state.id).classList.toggle('done',state.ok);
+      $('step'+state.id+'Status').textContent=state.status;
+      $('step'+state.id+'Hint').textContent=state.hint;
+    }
   }
   function go(newPage){
     if(!pathPage.has(newPage))newPage='overview';
@@ -437,6 +460,7 @@
     $('mobileOverlay').addEventListener('click',closeMobile);
     $('navExport').addEventListener('click',()=>{go('setup');$('backupBtn').scrollIntoView({behavior:'smooth',block:'end'});});
     $('overviewGenerate').addEventListener('click',()=>generate());
+    $('homeBlankBtn').addEventListener('click',()=> $('blankSchoolBtn').click());
     $('setupGenerate').addEventListener('click',()=>generate());
     $('shuffleBtn').addEventListener('click',()=>generate());
     $('quickPrint').addEventListener('click',()=>{go('timetable');printTable();});
