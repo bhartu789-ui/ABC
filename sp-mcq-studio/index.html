@@ -246,7 +246,6 @@ function printReportCard(){
  const person=safe(studentName.trim()||'Student');
  const title=safe(currentMeta.topic||'Question Set');
  const rows=r.details.map(d=>'<tr><td>'+d.number+'</td><td class="q-label">'+safe(d.question)+'</td><td>'+ (d.chosen===null?'—':alphabet[d.chosen]) +'</td><td>'+alphabet[d.answer]+'</td><td class="'+(d.correct?'pass':'fail')+'">'+(d.correct?'Correct':'Incorrect')+'</td></tr>').join('');
- const style=String.raw;
  const sheetCSS=[
    '@page{size:A4 portrait;margin:16mm 17mm 18mm 17mm}',
    '*{box-sizing:border-box}html,body{margin:0;padding:0;font-family:Arial,"Noto Sans",sans-serif;color:#1e2c46;font-size:10pt;-webkit-print-color-adjust:exact;print-color-adjust:exact}',
@@ -351,7 +350,7 @@ $('shuffleBtn').addEventListener('click',()=>{if(!questions.length)return;review
 $('tryDemo').addEventListener('click',()=>loadSet(sample,{topic:'Force and Motion — sample',grade:7,difficulty:'Easy',language:'English',mode:'demo'}));
 $('editBtn').addEventListener('click',()=>{mode=mode==='edit'?'quiz':'edit';resultShown=false;reviewVisible=false;finishedAt=null;selections={};render()});
 $('quizBtn').addEventListener('click',()=>{mode=mode==='view'?'quiz':'view';resultShown=false;reviewVisible=false;finishedAt=null;render()});
-$('gradeBtn').addEventListener('click',()=>{if(Object.keys(selections).length!==questions.length){message('Please answer all questions before submitting.');return;}finishedAt=new Date();resultShown=true;reviewVisible=false;render();message('Quiz submitted. Your report card is ready.',true);$('reportCard').scrollIntoView?.({behavior:'smooth',block:'start'})});
+$('gradeBtn').addEventListener('click',()=>{if(Object.keys(selections).length!==questions.length){message('Please answer all questions before submitting.');return;}studentName=$('studentNameInput').value.slice(0,80);finishedAt=new Date();resultShown=true;reviewVisible=false;render();message('Quiz submitted. Your report card is ready.',true);$('reportCard').scrollIntoView?.({behavior:'smooth',block:'start'})});
 $('resetQuizBtn').addEventListener('click',restartQuiz);
 $('studentNameInput').addEventListener('input',e=>{studentName=e.target.value.slice(0,80)});
 $('exportBtn').addEventListener('click',exportCsv);$('jsonBtn').addEventListener('click',exportJson);
