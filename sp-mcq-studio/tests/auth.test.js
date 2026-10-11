@@ -90,7 +90,7 @@ test('Google JWT with expired token is rejected', async () => {
 test('Google JWT with tampered signature is rejected', async () => {
   const token=jwt();
   const sections=token.split('.');
-  sections[2]='A'+sections[2].slice(1);
+  sections[2]=(sections[2][0]==='A'?'B':'A')+sections[2].slice(1);
   await assert.rejects(()=>auth.verifyGoogleToken(sections.join('.'),{clientId:CLIENT,fetcher:fakeGoogleKeys}),/signature/);
 });
 
@@ -114,7 +114,6 @@ test('seven-day session expiry is enforced', () => withEnv(() => {
 }));
 
 test('POST sign-in denies cross-origin requests before ID token processing', async () => {
-  await withEnv(async () => {});
   const oldId=process.env.GOOGLE_CLIENT_ID,oldSecret=process.env.SESSION_SECRET;
   process.env.GOOGLE_CLIENT_ID=CLIENT;process.env.SESSION_SECRET=SECRET;
   try {
