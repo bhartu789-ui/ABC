@@ -143,7 +143,7 @@ function updateBankUI(preferredId){
  $('saveBankBtn').disabled=!questions.length;$('openBankBtn').disabled=!bank.length;$('deleteBankBtn').disabled=!bank.length;
 }
 function validateSet(data){
- if(!data||!Array.isArray(data.questions)||data.questions.length<1||data.questions.length>100||!data.meta||typeof data.meta.topic!=='string')throw new Error('Invalid QuizMetric JSON question set.');
+ if(!data||!Array.isArray(data.questions)||data.questions.length<1||data.questions.length>50||!data.meta||typeof data.meta.topic!=='string')throw new Error('Invalid QuizMetric JSON question set.');
  const questions=data.questions.map((q,i)=>{
   if(!q||typeof q.question!=='string'||!q.question.trim()||q.question.length>1200||!Array.isArray(q.options)||q.options.length!==4||q.options.some(v=>typeof v!=='string'||!v.trim()||v.length>600)||!Number.isInteger(q.answer)||q.answer<0||q.answer>3)throw new Error(`Question ${i+1} contains invalid data.`);
   if(new Set(q.options.map(o=>o.trim().toLocaleLowerCase())).size!==4)throw new Error(`Question ${i+1} has duplicate options.`);
