@@ -22,3 +22,11 @@ test('prompt uses correct language and exact count', () => {
   assert.ok(p.includes('Sindhi'));
   assert.ok(p.includes('EXACTLY 10'));
 });
+
+test('duplicate options are rejected', () => {
+  assert.throws(() => normalizeQuestions({questions:[{question:'Example?',options:['same','Same','Other','Fourth'],answer:0}]},1),/duplicate options/);
+});
+test('duplicate question stems are rejected', () => {
+  const q={question:'What is force?',options:['a','b','c','d'],answer:0};
+  assert.throws(() => normalizeQuestions({questions:[q,{...q,question:'WHAT is force?'}]},2),/duplicate questions/);
+});
