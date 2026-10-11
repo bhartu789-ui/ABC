@@ -17,6 +17,9 @@ TimeTable Pro helps teachers and school administrators set up classes, subjects,
 - Automatically save your school data and schedule to **this browser only**. Export/import a JSON backup to move between devices.
 - Demo workspace with 4 classes, 14 teachers, 8 subjects and 120 fully scheduled weekly lessons. Use **Start blank** in School setup to build your own school without deleting the demonstration allocations individually.
 - Responsive teacher-first web UI, mobile layout and accessible form labels.
+- **Clean workspace dashboard:** simple quick actions, guided three-step progress (school details → weekly lessons → timetable), high-contrast controls and uncluttered class/teacher views.
+- **Start a new school** directly from the dashboard or School setup; this asks for confirmation before replacing browser-local data.
+- **Clear readiness guidance:** unfinished school setups show what needs completing instead of reporting a successful timetable.
 
 ## Run locally
 
@@ -56,7 +59,8 @@ There is **no cloud database** in this MVP. Teacher names, allocations and timet
 ```
 timetable-pro/
   index.html          Main interface
-  styles.css          Theme and responsive layout
+  styles.css          Original theme and responsive layout
+  clean.css           Clean dashboard and accessible styling refinements
   favicon.svg         App icon
   src/engine.js       Scheduling/validation engine
   src/app.js          User interactions and exports
