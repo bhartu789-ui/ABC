@@ -1,4 +1,6 @@
-# SP MCQ Studio — AI MCQ Generator
+# QuizMetric — AI Assessment Studio
+
+*Create Smarter Questions. Assess Better.*
 
 Teacher-first, free-tier-compatible MCQ app with AI generation, editable questions, exam/quiz mode, CSV + JSON download and Print / Save as PDF. English, Urdu and Sindhi. Grade 1–12. No paid npm dependencies, no account or database required.
 
