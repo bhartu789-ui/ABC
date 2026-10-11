@@ -15,7 +15,7 @@ TimeTable Pro helps teachers and school administrators set up classes, subjects,
 - Print one class, one teacher or every class to A4 landscape PDF via the browser print dialogue.
 - Export an Excel-compatible UTF-8 CSV with formula-injection protection.
 - Automatically save your school data and schedule to **this browser only**. Export/import a JSON backup to move between devices.
-- Demo workspace with 4 classes, 14 teachers, 8 subjects and 120 fully scheduled weekly lessons.
+- Demo workspace with 4 classes, 14 teachers, 8 subjects and 120 fully scheduled weekly lessons. Use **Start blank** in School setup to build your own school without deleting the demonstration allocations individually.
 - Responsive teacher-first web UI, mobile layout and accessible form labels.
 
 ## Run locally
