@@ -1,0 +1,25 @@
+name: QuizMetric Checks
+on:
+  push:
+    paths:
+      - "sp-mcq-studio/**"
+      - ".github/workflows/quizmetric-tests.yml"
+  pull_request:
+    paths:
+      - "sp-mcq-studio/**"
+  workflow_dispatch:
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: sp-mcq-studio
+    steps:
+      - name: Checkout source
+        uses: actions/checkout@v4
+      - name: Use Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+      - name: Run application tests
+        run: npm test
