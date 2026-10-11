@@ -6,12 +6,22 @@ const DIFFICULTIES = ['Easy', 'Medium', 'Hard'];
 
 function normalizeQuestions(data, expectedCount) {
   if (!data || !Array.isArray(data.questions)) throw new Error('AI returned an invalid question set.');
+  const questionStems = new Set();
   const questions = data.questions.map((q, index) => {
     if (!q || typeof q.question !== 'string' || !q.question.trim() ||
         !Array.isArray(q.options) || q.options.length !== 4 ||
         !q.options.every(o => typeof o === 'string' && o.trim())) {
       throw new Error('Question ' + (index + 1) + ' is missing text or options.');
     }
+    const options = q.options.map(o => o.trim());
+    if (new Set(options.map(o => o.toLocaleLowerCase())).size !== 4) {
+      throw new Error('Question ' + (index + 1) + ' contains duplicate options.');
+    }
+    const stem = q.question.trim().toLocaleLowerCase().replace(/\s+/g, ' ');
+    if (questionStems.has(stem)) {
+      throw new Error('AI returned duplicate questions. Please retry with fewer questions.');
+    }
+    questionStems.add(stem);
     let answer = q.answer;
     if (typeof answer === 'string' && /^[A-D]$/i.test(answer.trim())) {
       answer = answer.trim().toUpperCase().charCodeAt(0) - 65;
@@ -24,7 +34,7 @@ function normalizeQuestions(data, expectedCount) {
     return {
       id: index + 1,
       question: q.question.trim().slice(0, 1200),
-      options: q.options.map(o => o.trim().slice(0, 600)),
+      options: options.map(o => o.slice(0, 600)),
       answer,
       explanation: typeof q.explanation === 'string' ? q.explanation.trim().slice(0, 1000) : ''
     };
