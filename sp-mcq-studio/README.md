@@ -12,8 +12,15 @@ Teacher-first, free-tier-compatible MCQ app with AI generation, editable questio
 - **Quiz mode**: click answers, check score and explanations, retry.
 - **Print/Save as PDF**: print question paper with optional answer key.
 - **Export CSV (Excel-compatible, Unicode BOM)** and JSON.
-- Restore your previous set from **browser localStorage** (no cloud backup).
+- **My Question Bank:** save up to 25 MCQ sets on the current browser, then open or delete them.
+- **Import QuizMetric JSON** files for backups or to transfer question sets between devices. Imports validate the schema.
+- **Shuffle** questions while retaining paired answer keys.
+- Restore your most recent set from **browser localStorage** (no cloud backup).
 - **Try sample set** works without API key or internet (after page loads).
+
+**Privacy:** saved sets are stored only in the current browser, not synced across devices. Download JSON before clearing browser data. JSON imports accept up to 1.5 MB and 100 questions.
+
+**MCQ quality checks:** exact duplicate questions and repeated answer choices are rejected, but teachers must still review factual correctness.
 
 ## What is required for REAL AI generation?
 Use a free-tier Gemini API key from https://aistudio.google.com/apikey. **Do not put it in the HTML or GitHub.**
