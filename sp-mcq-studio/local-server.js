@@ -22,4 +22,4 @@ http.createServer(async (req, res) => {
   if (!file) { res.writeHead(404).end('Not found'); return; }
   const content = fs.readFileSync(path.join(root, file));
   res.writeHead(200, { 'Content-Type': file.endsWith('.svg') ? 'image/svg+xml' : 'text/html; charset=utf-8' }).end(content);
-}).listen(process.env.PORT || 3000, () => console.log('SP MCQ running on http://localhost:' + (process.env.PORT || 3000)));
+}).listen(process.env.PORT || 3000, () => console.log('QuizMetric running on http://localhost:' + (process.env.PORT || 3000)));
