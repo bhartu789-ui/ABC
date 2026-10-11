@@ -456,6 +456,13 @@
     $('closeModal').addEventListener('click',closeEditor);$('cancelModal').addEventListener('click',closeEditor);$('saveModal').addEventListener('click',saveEditor);
     $('cellModal').addEventListener('click',e=>{if(e.target.id==='cellModal')closeEditor();});
     document.addEventListener('keydown',e=>{if(e.key==='Escape')closeEditor();});
+    $('blankSchoolBtn').addEventListener('click',()=>{
+      if(!confirm('Start a new blank school? This will replace the current workspace on this browser. Export a backup first if needed.'))return;
+      const fresh=E.defaultData();
+      data={...fresh,classes:[],teachers:[],subjects:[],allocations:[],schedule:{},locks:{}};
+      isDemo=false;selectedClass='';selectedTeacher='';allocationFilter='all';
+      persist(true);renderAll();go('setup');notify('Blank school created. Start by adding classes, teachers and subjects.');
+    });
     $('resetDemoBtn').addEventListener('click',()=>{
       if(!confirm('Replace your current timetable and settings with the demonstration school? Download a backup first if needed.'))return;
       data=initialDemo();isDemo=true;selectedClass=data.classes[0]?.id||'';selectedTeacher=data.teachers[0]?.id||'';allocationFilter='all';persist(false);renderAll();notify('Example school data loaded.');
